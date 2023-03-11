@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      fetch("http://api.nbp.pl/api/cenyzlota/last/20?format=json")
+        .then((res) => res.json())
+        .then((data) => console.log(data[3].cena))
+        .catch((err) => console.log("Błąd", err));
+      console.log("ddd");
+    </script>
+    <script>
+      //sposób alternatywny to samo co wyżej tylko więcej kodu:
+      var req = fetch("http://api.nbp.pl/api/cenyzlota/last/20?format=json");
+      req.then(function (res) {
+        res.json().then(function (data) {
+          console.log(data[1]);
+        });
+      });
+    </script>
+
+    <script>
+      var req2 = fetch("http://api.nbp.pl/api/cenyzlota/last/20?format=json");
+      req2
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          console.log(data[2]);
+        });
+    </script>
+  </body>
+</html>
